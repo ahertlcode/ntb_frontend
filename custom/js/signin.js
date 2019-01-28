@@ -13,7 +13,7 @@ app.controller("signIn", function($scope, $filter, $http) {
             contentType: "application/json"
         }).then((result) => {
             //write result.data to persistent storage
-            local_store(result, "user", "add");
+            local_store(result.data.data, "user", "add");
             //redirect to dashboard
             if (result.data.data.role !== "member") {
                 setTimeout("window.location.href = 'dashboard/'", 2000);
