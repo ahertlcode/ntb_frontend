@@ -18,7 +18,7 @@ app.controller('homeController', function($scope, $http) {
     this.user = local_store({}, "user", "get");
     $scope.logout = function() {
         $http({
-            url: "http://localhost:8000/api/logout",
+            url: baseUrl + "api/logout",
             method: "POST",
             data: { "api_token": this.user.api_token },
             contentType: "application/json"
@@ -33,6 +33,4 @@ app.controller('homeController', function($scope, $http) {
     $scope.user = this.user;
 });
 
-app.controller('tempController', function($scope, $http) {
-    $scope.name = "Abayomi Apetu";
-});
+app.controller('tempController', function($scope, $http) {});

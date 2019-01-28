@@ -1,5 +1,7 @@
 var app = angular.module("ntb-app", ['ngRoute']);
 
+var baseUrl = baseUrl('http://localhost:8000/');
+
 app.config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
@@ -32,7 +34,7 @@ app.controller('memberHomeController', function($scope, $filter, $http) {
     $scope.amt_balance = $scope.amt_earned - $scope.amt_wdrawn;
     $scope.logout = function() {
         $http({
-            url: "http://localhost:8000/api/logout",
+            url: baseUrl + "api/logout",
             method: "POST",
             data: { "api_token": this.user.api_token },
             contentType: "application/json"
@@ -113,7 +115,7 @@ app.controller('acctbalController', function($scope, $filter, $http) {
     this.accountno = this.user.acct_id;
     console.log(this.user.api_token);
     $http({
-        url: "http://localhost:8000/api/account_balance/" + this.accountno,
+        url: baseUrl + "api/account_balance/" + this.accountno,
         method: "GET",
         headers: {
             Authorization: `Bearer ${this.user.api_token}`

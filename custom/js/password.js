@@ -1,11 +1,14 @@
 var app = angular.module("ntb-app1", []);
+
+var baseUrl = baseUrl('http://localhost:8000/');
+
 app.controller("passwordReset", function($scope, $filter, $http) {
-    this.reset = { "email": '',"token":'',"password":'',"password_confirmation":''};
+    this.reset = { "email": '', "token": '', "password": '', "password_confirmation": '' };
     $scope.validate = false;
     $scope.doValidate = function() {
         $("#btnValidate").addClass("is-loading");
         $http({
-            url: "http://localhost:8000/api/password/email",
+            url: baseUrl + "api/password/email",
             method: "POST",
             data: this.reset,
             contentType: "application/json"
@@ -28,7 +31,7 @@ app.controller("passwordReset", function($scope, $filter, $http) {
         //this.reset = {"email":'', "password": '', "password_confirm": '', "token": '' };
         $("#btnReset").addClass("is-loading");
         $http({
-            url: "http://localhost:8000/api/password/reset",
+            url: baseUrl + "api/password/reset",
             method: "POST",
             data: this.reset,
             contentType: "application/json"

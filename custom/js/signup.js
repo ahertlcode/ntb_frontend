@@ -1,4 +1,7 @@
 var app = angular.module("ntb-app", []);
+
+var baseUrl = baseUrl('http://localhost:8000/');
+
 app.controller('signUp', function($scope, $filter, $http) {
     this.signup = {
         "user_name": '',
@@ -17,7 +20,7 @@ app.controller('signUp', function($scope, $filter, $http) {
     $scope.dsignup = function() {
         $("#btnSignUp").addClass("is-loading");
         $http({
-            url: "http://localhost:8000/api/register",
+            url: baseUrl + "api/register",
             method: "POST",
             data: this.signup,
             contentType: 'application/json'

@@ -1,10 +1,13 @@
 var app = angular.module("ntb-app", []);
+
+var baseUrl = baseUrl('http://localhost:8000/');
+
 app.controller("signIn", function($scope, $filter, $http) {
     this.signin = { "email": '', "password": '' };
     $scope.dsignin = function() {
         $("#btnSignIn").addClass("is-loading");
         $http({
-            url: "http://localhost:8000/api/login",
+            url: baseUrl + "api/login",
             method: "POST",
             data: this.signin,
             contentType: "application/json"

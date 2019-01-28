@@ -1,3 +1,7 @@
+function baseUrl(hostAdd) {
+    return hostAdd;
+}
+
 function local_store(arr, desc, actn) {
     var retn;
     if (typeof(Storage) !== undefined) {
